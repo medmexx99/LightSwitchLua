@@ -20,12 +20,12 @@ function switchLights(payload)
            end
         end
     end
-    return "{\"status\":\"ok\"}"
+    return getLightStatus()
 end
 function getLightStatus() 
     responseStr = "{\"status\":"
-    responseStr = responseStr .. "{\"light1\":" .. (gpio.read(led1Pin) == gpio.HIGH and "\"ON\"" or "\"OFF\"") .. "}"
-    responseStr = responseStr .. ",{\"light2\":" .. (gpio.read(led2Pin) == gpio.HIGH and "\"ON\"" or "\"OFF\"") .. "}"
+    responseStr = responseStr .. "{\"light1\":" .. (gpio.read(led1Pin) == gpio.HIGH and "\"ON\"" or "\"OFF\"")
+    responseStr = responseStr .. ",\"light2\":" .. (gpio.read(led2Pin) == gpio.HIGH and "\"ON\"" or "\"OFF\"") .. "}"
     responseStr = responseStr .. "}"
     return responseStr
 end
